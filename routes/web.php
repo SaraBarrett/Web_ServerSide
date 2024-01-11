@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('bemvindos');
 
 Route::get('/home', function () {
-    return view('welcome');
+     return view('main.home');
 })->name('home.index');
 
-
-Route::get('/ola/', function () {
+Route::get('/ola', function () {
     return '<h1>Hello Turma de Software</h1>';
 })->name('home.hello');
 
@@ -30,4 +30,19 @@ Route::get('/ola/', function () {
 Route::get('/hello/{nome}', function ($nome) {
     return '<h1>Hello Turma de Software</h1>'.$nome;
 });
+
+//rotas de users
+Route::get('/users/add', function () {
+    return view('users.add_user');
+})->name('users.add');
+
+
+Route::fallback(function(){
+return '<h2>Ups, está perdido</h2>';
+});
+
+
+
+
+
 
