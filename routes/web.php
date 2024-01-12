@@ -38,7 +38,7 @@ Route::get('/users/add', function () {
 
 
 Route::fallback(function(){
-return '<h2>Ups, está perdido</h2>';
+ return view('main.fallback');
 });
 
 
