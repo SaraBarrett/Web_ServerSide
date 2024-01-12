@@ -36,6 +36,20 @@ Route::get('/users/add', function () {
     return view('users.add_user');
 })->name('users.add');
 
+Route::get('/users/all', function () {
+    $hello = 'Finalmente vamos para código';
+    $helloAgain = 'cucu';
+
+    $daysOfWeek = ['Segunda', 'Terça', 'Quarta', 'Quinta'];
+
+    return view('users.all_users', compact(
+        'hello',
+        'helloAgain',
+        'daysOfWeek'
+    ));
+
+})->name('users.all');
+
 
 Route::fallback(function(){
  return view('main.fallback');
