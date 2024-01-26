@@ -15,6 +15,9 @@ class UserController extends Controller
         $info = $this->info();
 
         $users = $this->getContacts();
+
+      //  dd($users);
+
         return view('users.all_users', compact(
             'hello',
             'helloAgain',
@@ -71,12 +74,16 @@ class UserController extends Controller
     }
 
     private function getContacts(){
-        $users = [
-            ['id'=>1, 'name'=>'Sara', 'phone'=>'91222222', 'email'=> 'sara@gmail.com'],
-            ['id'=>2, 'name'=>'Joaquim','phone'=> '91222222',  'email'=>'Joaquim@gmail.com'],
-            ['id'=>3, 'name'=>'Helder','phone'=> '91222222',  'email'=>'Helder@gmail.com'],
-            ['id'=>4, 'name'=>'Bruno', 'phone'=>'91222222',  'email'=>'Bruno@gmail.com'],
-        ];
+
+        // $users = [
+        //     ['id'=>1, 'name'=>'Sara', 'phone'=>'91222222', 'email'=> 'sara@gmail.com'],
+        //     ['id'=>2, 'name'=>'Joaquim','phone'=> '91222222',  'email'=>'Joaquim@gmail.com'],
+        //     ['id'=>3, 'name'=>'Helder','phone'=> '91222222',  'email'=>'Helder@gmail.com'],
+        //     ['id'=>4, 'name'=>'Bruno', 'phone'=>'91222222',  'email'=>'Bruno@gmail.com'],
+        // ];
+
+        $users = DB::table('users')
+            ->get();
 
         return $users;
 

@@ -20,10 +20,10 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
-                    <td scope="row">{{ $user['id'] }}</td>
-                    <td>{{ $user['name'] }}</td>
-                    <td>{{ $user['phone'] }}</td>
-                    <td>{{ $user['email'] }}</td>
+                    <td scope="row">{{ $user->id }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->phone }}</td>
+                    <td>{{ $user->email }}</td>
                 </tr>
             @endforeach
         </tbody>
