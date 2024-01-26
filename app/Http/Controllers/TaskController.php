@@ -15,7 +15,10 @@ class TaskController extends Controller
     }
 
     private function getAllTasks(){
-        $tasks = DB::table('tasks')->get();
+        $tasks = DB::table('tasks')
+                ->join('users', 'user_id','=','users.id')
+                ->select('tasks.*', 'users.name as usname')
+                ->get();
 
         return $tasks;
     }

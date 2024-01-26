@@ -21,7 +21,7 @@
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->due_at }}</td>
                     <td>{{ $item->status }}</td>
-                    <td>{{ $item->user_id }}</td>
+                    <td>{{ $item->usname }}</td>
                 </tr>
             @endforeach
         </tbody>
