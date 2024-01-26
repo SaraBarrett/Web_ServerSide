@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 
@@ -33,6 +34,9 @@ Route::get('/hello/{nome}', function ($nome) {
 //rotas de users
 Route::get('/users/add', [UserController::class, 'addUser'])->name('users.add');
 Route::get('/users/all', [UserController::class, 'allUsers'])->name('users.all');
+
+//rotas de tasks
+Route::get('/tasks/all', [TaskController::class, 'allTasks'])->name('tasks.all');
 
 
 Route::fallback(function(){
