@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -22,9 +23,34 @@ class UserController extends Controller
             'users'
         ));
     }
+
     public function addUser(){
-        return view('users.add_user');
+
+        DB::table('users')
+        ->updateOrInsert(
+            [
+                'email'=> 'Lais@gmail.com',
+            ],
+            [
+                'name'=> 'Lais',
+                'password'=> 'sarateste',
+                'updated_at' => now(),
+                'created_at' => now(),
+        ]);
+
+
+        $users = Db::table('users')
+        ->get();
+
+        $myUser = DB::table('users')
+        ->where('password', '12345')
+        ->first();
+
+        dd($myUser);
+
+       return view('users.add_user');
     }
+
     private function getWeekDays(){
 
         $daysofWeek = ['Segunda', 'Terça', 'Quarta', 'Quinta'];
