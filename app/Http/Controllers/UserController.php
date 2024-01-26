@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,6 +26,16 @@ class UserController extends Controller
             'info',
             'users'
         ));
+    }
+
+    public function viewUser($id){
+
+        $myUser = DB::table('users')
+                ->where('id',$id )
+                ->first();
+
+
+        return view('users.view', compact('myUser'));
     }
 
     public function addUser(){
@@ -82,8 +93,13 @@ class UserController extends Controller
         //     ['id'=>4, 'name'=>'Bruno', 'phone'=>'91222222',  'email'=>'Bruno@gmail.com'],
         // ];
 
-        $users = DB::table('users')
-            ->get();
+         $users = DB::table('users')
+            ->whereNull('updated_at')
+           ->get();
+
+        //$users = User::get();
+
+        $adminType = User::TYPE_ADMIN;
 
         return $users;
 

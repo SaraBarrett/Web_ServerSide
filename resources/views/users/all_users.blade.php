@@ -15,6 +15,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">Email</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->email }}</td>
+                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
                 </tr>
             @endforeach
         </tbody>
