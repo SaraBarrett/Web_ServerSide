@@ -16,7 +16,7 @@ class UserController extends Controller
 
         $users = $this->getContacts();
 
-      //  dd($users);
+        //dd($users);
 
         return view('users.all_users', compact(
             'hello',
@@ -49,7 +49,7 @@ class UserController extends Controller
         ->where('password', '12345')
         ->first();
 
-        dd($myUser);
+        //dd($myUser);
 
        return view('users.add_user');
     }
