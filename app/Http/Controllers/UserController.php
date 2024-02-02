@@ -80,7 +80,6 @@ class UserController extends Controller
     }
 
     public function createUser(Request $request){
-
         $request->validate([
             'email' => 'required|unique:users',
             'name' => 'required|string|max:10',
@@ -94,6 +93,24 @@ class UserController extends Controller
 
         return redirect()->route('users.all')->with('message', 'Boa, estamos a caminho de ter uma super app com utilizadores adicionados!');
     }
+
+
+    public function updateUser(Request $request){
+
+        $request->validate([
+            'phone' => 'min:9|max:15',
+        ]);
+
+        User::where('id', $request->id)
+        ->update([
+            'name' => $request->name,
+            'address' => $request->address,
+            'phone' =>$request->phone,
+        ]);
+
+        return redirect()->route('users.all')->with('message', 'Utilizador actualizado');
+    }
+
 
 
 

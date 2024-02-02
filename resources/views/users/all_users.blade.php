@@ -9,7 +9,7 @@
     <p>{{ $info['modules'][0] }}</p> --}}
     @if (session('message'))
         <div class="alert alert-success">
-            {{session('message')}}
+            {{ session('message') }}
         </div>
     @endif
 
@@ -31,7 +31,7 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver</a></td>
+                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver / Actualizar</a></td>
                     <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Delete</a></td>
                 </tr>
             @endforeach

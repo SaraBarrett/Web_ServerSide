@@ -27,6 +27,13 @@ class TaskController extends Controller
 
     }
 
+    public function addTask(){
+
+        $users = DB::table('users')->get();
+
+        return view('tasks.add_task', compact('users'));
+    }
+
     public function deleteTask($id){
         Db::table('tasks')
         ->where('id', $id)

@@ -35,6 +35,7 @@ Route::get('/hello/{nome}', function ($nome) {
 Route::get('/users/add', [UserController::class, 'addUser'])->name('users.add');
 Route::post('/users/create', [UserController::class, 'createUser'])->name('users.create');
 
+Route::post('/users/update', [UserController::class, 'updateUser'])->name('users.update');
 
 Route::get('/users/all', [UserController::class, 'allUsers'])->name('users.all');
 
@@ -45,8 +46,14 @@ Route::get('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('u
 Route::get('/tasks/all', [TaskController::class, 'allTasks'])->name('tasks.all');
 
 Route::get('/tasks/view/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+
+
 Route::get('/tasks/delete/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
 
+
+//rotas de users
+Route::get('/tasks/add', [TaskController::class, 'addTask'])->name('tasks.add');
+Route::post('/tasks/create', [TaskController::class, 'createTask'])->name('tasks.create');
 
 Route::fallback(function(){
  return view('main.fallback');

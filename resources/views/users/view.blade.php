@@ -2,12 +2,13 @@
 
 @section('content')
     <h1> Ver / Actualizar Dados {{ $myUser->name }}</h1>
-    <form method="POST" action="{{ route('users.create') }}">
+    <form method="POST" action="{{ route('users.update') }}">
         @csrf
+        <input type="hidden" name="id" value={{ $myUser->id }} id="">
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Nome</label>
-            <input type="texto" value="{{ $myUser->name }}" name="name" class="form-control" id="exampleFormControlInput1"
-                placeholder="Nome" required>
+            <input type="texto" value="{{ $myUser->name }}" name="name" class="form-control"
+                id="exampleFormControlInput1" placeholder="Nome" required>
             @error('name')
                 <div class="alert alert-danger">
                     O nome que colocou é inválido.
