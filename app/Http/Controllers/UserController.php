@@ -38,6 +38,19 @@ class UserController extends Controller
         return view('users.view', compact('myUser'));
     }
 
+    public function deleteUser($id){
+
+        Db::table('tasks')
+        ->where('user_id', ($id))
+        ->delete();
+
+        Db::table('users')
+            ->where('id', ($id))
+            ->delete();
+
+        return back();
+    }
+
     public function addUser(){
 
         DB::table('users')
@@ -94,7 +107,7 @@ class UserController extends Controller
         // ];
 
          $users = DB::table('users')
-            ->whereNull('updated_at')
+            //->whereNull('updated_at')
            ->get();
 
         //$users = User::get();
