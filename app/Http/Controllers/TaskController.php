@@ -14,6 +14,19 @@ class TaskController extends Controller
         return view('tasks.all_tasks', compact('tasks'));
     }
 
+    public function viewTask($id){
+
+        $myTask = Db::table('tasks')
+                ->where('tasks.id', $id)
+                ->join('users', 'user_id','=','users.id')
+                ->select('tasks.*', 'users.name as usname')
+                ->first();
+
+
+        return view('tasks.view_task', compact('myTask'));
+
+    }
+
     private function getAllTasks(){
         $tasks = DB::table('tasks')
                 ->join('users', 'user_id','=','users.id')

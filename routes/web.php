@@ -41,6 +41,9 @@ Route::get('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('u
 //rotas de tasks
 Route::get('/tasks/all', [TaskController::class, 'allTasks'])->name('tasks.all');
 
+Route::get('/tasks/view/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+Route::get('/tasks/delete/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
+
 
 Route::fallback(function(){
  return view('main.fallback');
