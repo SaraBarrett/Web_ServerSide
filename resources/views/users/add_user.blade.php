@@ -6,33 +6,34 @@
             @csrf
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nome</label>
-                <input type="texto" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Nome"
-                    required>
+                <input type="texto" value="{{ old('name') }}" name="name" class="form-control"
+                    id="exampleFormControlInput1" placeholder="Nome" required>
                 @error('name')
                     <div class="alert alert-danger">
                         O nome que colocou é inválido.
                     </div>
                 @enderror
             </div>
+
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Email</label>
-                <input type="email" name="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="email@exemplo.com" required>
+                <input value="{{ old('email') }}" type="email" name="email" class="form-control"
+                    id="exampleFormControlInput1" placeholder="email@exemplo.com" required>
                 @error('email')
                     <div class="alert alert-danger">
-                        O mail que colocou já está registado
+                        O mail que colocou já está registado.
                     </div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="exampleFormControlInput1"
+                <input value="" type="password" name="password" class="form-control" id="exampleFormControlInput1"
                     placeholder="Password" required>
             </div>
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
         <br>
-        <a href="{{ route('home.index') }}"><input type="submit" value="Voltar"></a>
+        <a class="btn btn-success" href="{{ route('home.index') }}">Voltar</a>
         <br>
 
     </div>

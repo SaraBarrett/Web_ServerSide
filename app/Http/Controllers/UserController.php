@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -82,13 +83,19 @@ class UserController extends Controller
 
         $request->validate([
             'email' => 'required|unique:users',
-            'name' => 'required|string|max:5',
+            'name' => 'required|string|max:10',
         ]);
 
-        dd($request->password);
+        User::insert([
+            'name' => $request->name,
+            'email' =>$request->email,
+            'password' =>Hash::make($request->password),
+        ]);
+
+        return redirect()->route('users.all')->with('message', 'Boa, estamos a caminho de ter uma super app com utilizadores adicionados!');
     }
 
-    
+
 
 
     private function getWeekDays(){

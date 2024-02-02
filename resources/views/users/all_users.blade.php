@@ -7,6 +7,11 @@
     <p>$daysOfWeek[2]</p>
     <p>{{ $info['name'] }}</p>
     <p>{{ $info['modules'][0] }}</p> --}}
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+    @endif
 
     <table class="table">
         <thead>
