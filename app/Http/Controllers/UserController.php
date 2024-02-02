@@ -53,7 +53,7 @@ class UserController extends Controller
 
     public function addUser(){
 
-        DB::table('users')
+       /* DB::table('users')
         ->updateOrInsert(
             [
                 'email'=> 'Lais@gmail.com',
@@ -73,10 +73,15 @@ class UserController extends Controller
         ->where('password', '12345')
         ->first();
 
-        //dd($myUser);
+        dd($myUser);*/
 
        return view('users.add_user');
     }
+
+    public function createUser(Request $request){
+        dd($request->all());
+    }
+
 
     private function getWeekDays(){
 

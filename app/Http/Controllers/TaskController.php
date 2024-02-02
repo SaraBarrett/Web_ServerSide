@@ -27,6 +27,15 @@ class TaskController extends Controller
 
     }
 
+    public function deleteTask($id){
+        Db::table('tasks')
+        ->where('id', $id)
+        ->delete();
+
+        return back();
+
+    }
+
     private function getAllTasks(){
         $tasks = DB::table('tasks')
                 ->join('users', 'user_id','=','users.id')

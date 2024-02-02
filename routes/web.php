@@ -33,6 +33,9 @@ Route::get('/hello/{nome}', function ($nome) {
 
 //rotas de users
 Route::get('/users/add', [UserController::class, 'addUser'])->name('users.add');
+Route::post('/users/create', [UserController::class, 'createUser'])->name('users.create');
+
+
 Route::get('/users/all', [UserController::class, 'allUsers'])->name('users.all');
 
 Route::get('/users/view/{id}', [UserController::class, 'viewUser'])->name('users.view');
