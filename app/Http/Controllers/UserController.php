@@ -79,8 +79,16 @@ class UserController extends Controller
     }
 
     public function createUser(Request $request){
-        dd($request->all());
+
+        $request->validate([
+            'email' => 'required|unique:users',
+            'name' => 'required|string|max:5',
+        ]);
+
+        dd($request->password);
     }
+
+    
 
 
     private function getWeekDays(){
