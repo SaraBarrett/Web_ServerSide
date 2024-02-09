@@ -19,12 +19,36 @@ class TaskController extends Controller
 
         $myTask = Db::table('tasks')
                 ->where('tasks.id', $id)
-                ->join('users', 'user_id','=','users.id')
+                ->leftJoin('users', 'user_id','=','users.id')
                 ->select('tasks.*', 'users.name as usname')
                 ->first();
 
 
-        return view('tasks.view_task', compact('myTask'));
+        $users = DB::table('users')->get();
+
+
+        return view('tasks.view_task', compact('myTask', 'users'));
+
+    }
+
+
+    public function updateTask(Request $request){
+
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'description' => 'required|string|max:200',
+            'user_id' => 'required|integer|exists:users,id'
+        ]);
+
+        Task::where('id', $request->id)
+        ->update([
+            'name' => $request->name ,
+            'description' =>$request->description,
+            'user_id' =>$request->user_id,
+            'due_at' =>$request->due_at,
+        ]);
+
+        return redirect()->route('tasks.all')->with('message', 'Tarefa actualizada com sucesso');
 
     }
 

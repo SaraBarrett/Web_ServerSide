@@ -29,7 +29,7 @@
                     <td>{{ $item->due_at }}</td>
                     <td>{{ $item->status }}</td>
                     <td>{{ $item->usname }}</td>
-                    <td><a class="btn btn-info" href="{{ route('tasks.view', $item->id) }}">Ver</a></td>
+                    <td><a class="btn btn-info" href="{{ route('tasks.view', $item->id) }}">Ver / Actualizar</a></td>
                     <td><a class="btn btn-danger" href="{{ route('tasks.delete', $item->id) }}">Apagar</a></td>
                 </tr>
             @endforeach

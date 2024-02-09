@@ -54,6 +54,7 @@ Route::get('/tasks/delete/{id}', [TaskController::class, 'deleteTask'])->name('t
 //rotas de users
 Route::get('/tasks/add', [TaskController::class, 'addTask'])->name('tasks.add');
 Route::post('/tasks/create', [TaskController::class, 'createTask'])->name('tasks.create');
+Route::post('/tasks/update', [TaskController::class, 'updateTask'])->name('tasks.update');
 
 Route::fallback(function(){
  return view('main.fallback');
