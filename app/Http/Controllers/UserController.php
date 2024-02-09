@@ -16,6 +16,10 @@ class UserController extends Controller
         $daysOfWeek = $this->getWeekDays();
         $info = $this->info();
 
+
+        //verificar se é formador
+        //ir à base de dados ver se é formador
+        //se formador, return $isTrainer = true
         //dd(request()->query('search'));
 
 

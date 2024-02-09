@@ -38,8 +38,12 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->email }}</td>
-                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver / Actualizar</a></td>
-                    <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Delete</a></td>
+                    @auth
+                        <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver / Actualizar</a></td>
+                        @if (Auth::user()->user_type == 1)
+                            <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Delete</a></td>
+                        @endif
+                    @endauth
                 </tr>
             @endforeach
         </tbody>
