@@ -16,7 +16,21 @@ class UserController extends Controller
         $daysOfWeek = $this->getWeekDays();
         $info = $this->info();
 
-        $users = $this->getContacts();
+        //dd(request()->query('search'));
+
+
+        //filtro que vem do que colocamos no FE
+        $search = request()->query('search') ? request()->query('search') : null;
+
+
+        //objecto que carregamos na tabela do FE
+        $users = DB::table('users');
+        if($search){
+            $users = $users
+                    ->where('name', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%");
+        };
+        $users= $users->get();
 
         //dd($users);
 
@@ -82,7 +96,7 @@ class UserController extends Controller
     public function createUser(Request $request){
         $request->validate([
             'email' => 'required|unique:users',
-            'name' => 'required|string|max:10',
+            'name' => 'required|string|max:20',
         ]);
 
         User::insert([
@@ -110,9 +124,6 @@ class UserController extends Controller
 
         return redirect()->route('users.all')->with('message', 'Utilizador actualizado');
     }
-
-
-
 
 
     private function getWeekDays(){

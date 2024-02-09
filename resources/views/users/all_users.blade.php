@@ -7,6 +7,13 @@
     <p>$daysOfWeek[2]</p>
     <p>{{ $info['name'] }}</p>
     <p>{{ $info['modules'][0] }}</p> --}}
+
+    <form method="GET">
+        <input type="text" value="" name="search" id="">
+        <button class="btn btn-info" type="submit">Procurar</button>
+    </form>
+
+
     @if (session('message'))
         <div class="alert alert-success">
             {{ session('message') }}
