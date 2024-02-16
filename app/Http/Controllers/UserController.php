@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -52,7 +53,6 @@ class UserController extends Controller
         $myUser = DB::table('users')
                 ->where('id',$id )
                 ->first();
-
 
         return view('users.view', compact('myUser'));
     }
@@ -119,11 +119,18 @@ class UserController extends Controller
             'phone' => 'min:9|max:15',
         ]);
 
+        $photo = null;
+
+        if($request->has('photo')){
+            $photo = Storage::putFile('profilePictures/', $request->photo);
+        }
+
         User::where('id', $request->id)
         ->update([
             'name' => $request->name,
             'address' => $request->address,
             'phone' =>$request->phone,
+            'photo' =>$photo,
         ]);
 
         return redirect()->route('users.all')->with('message', 'Utilizador actualizado');

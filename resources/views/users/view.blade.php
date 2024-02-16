@@ -2,7 +2,7 @@
 
 @section('content')
     <h1> Ver / Actualizar Dados {{ $myUser->name }}</h1>
-    <form method="POST" action="{{ route('users.update') }}">
+    <form method="POST" action="{{ route('users.update') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value={{ $myUser->id }} id="">
         <div class="mb-3">
@@ -43,6 +43,15 @@
             @error('phone')
                 <div class="alert alert-danger">
                     O telefone que colocou está inválida.
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">User Photo</label>
+            <input accept="image/*" type="file" name="photo" class="form-control" id="exampleFormControlInput1">
+            @error('photo')
+                <div class="alert alert-danger">
+                    Photo Inválida
                 </div>
             @enderror
         </div>
