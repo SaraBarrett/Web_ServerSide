@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
@@ -55,6 +56,8 @@ Route::get('/tasks/delete/{id}', [TaskController::class, 'deleteTask'])->name('t
 Route::get('/tasks/add', [TaskController::class, 'addTask'])->name('tasks.add');
 Route::post('/tasks/create', [TaskController::class, 'createTask'])->name('tasks.create');
 Route::post('/tasks/update', [TaskController::class, 'updateTask'])->name('tasks.update');
+
+Route::get('/dashboard/home', [DashboardController::class, 'index'])->name('dashboard.home');
 
 Route::fallback(function(){
  return view('main.fallback');
